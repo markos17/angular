@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html ng-app="app">
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <script src="Scripts/angular.min.js"></script>
+    <script src="app/app.module.js"></script>
+    <script src="app/main.js"></script>
+    <script>
+        (function () {
+            angular.module('app', []);
+        })();
+
+
+        (function () {
+            angular
+                .module('app')
+                .controller('Main', main);
+
+            function main() {
+                var vm = this;
+                vm.food = 'pizza';
+            }
+
+        })();
+    </script>
+</head>
+<body ng-controller="Main as vm">
+    hello
+    <p>
+        <input type="text" ng-model="vm.food" placeholder="Enter" />
+    </p>
+    <p>
+        Spaghetti souce is great with {{vm.food}} $scope.vm
+    </p>
+</body>
+</html>
