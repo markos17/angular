@@ -1,11 +1,12 @@
 ﻿<!DOCTYPE html>
-<html ng-app>
+<html ng-app="app">
 <head>
     <meta charset="utf-8" />
     <title>Chapter1 Example3</title>
-    <script src="http://code.angularjs.org/1.2.14/angular.js"></script>
+    <!--<script src="http://code.angularjs.org/1.2.14/angular.js"></script>-->
+    <script src="https://code.angularjs.org/1.5.1/angular.js"></script>
 </head>
-<body ng-controller="ExampleController">
+<body ng-controller="Main">
     <h1>Introduction</h1>
     <label>My name:</label>
     <input type="text" placeholder="Please enter name" ng-model="name">
@@ -17,19 +18,30 @@
         <option>yellow</option>
         <option>magenta</option>
     </select>
-    <h3 ng-show="name">Hello! My name is {{name}}. $scope.name</h3>
+    <h3 ng-show="name">Hello! My name is {{name}}.</h3>
     <h3 ng-show="color">
         My favourite color is
         <span title="{{color}}" style="background-color:{{color}};">&nbsp;&nbsp;</span>.
     </h3>
     <div ng-show="colorChangeCount > 0">The favorite color was changed {{colorChangeCount}} times.</div>
     <script>
-    function ExampleController($scope) {
-      $scope.colorChangeCount = 0;
-      $scope.onColorChanged = function() {
-        $scope.colorChangeCount++;
-      };
-    }
+
+        (function () {
+            angular.module('app', []);
+        })();
+
+        (function () {
+            angular
+                .module('app')
+                .controller('Main', main);
+
+            function main($scope) {
+                $scope.colorChangeCount = 0;
+                $scope.onColorChanged = function () {
+                    $scope.colorChangeCount++;
+                };
+            }
+        })();
     </script>
 </body>
 </html>
